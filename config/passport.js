@@ -10,11 +10,9 @@ passport.use(new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password'
 }, function(username, password, done) {
-	//console.log(username);
-	
-    //let users = JSON.parse(dataStore)
-    console.log(users);
 
+    var users = databaseOperations
+    
     for (var index = 0; index < users.length; ++index) {
 
         var user = users[index];
