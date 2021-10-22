@@ -24,7 +24,12 @@ app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.sendFile(`${__dirname}/index.hbs`, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err.message);
+    }
+  });
 });
 
 // error handler
