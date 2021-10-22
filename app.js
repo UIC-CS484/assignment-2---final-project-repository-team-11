@@ -8,6 +8,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var createAccount = require('./routes/createAccount');
 var signIn = require('./routes/signIn');
+var submit = require('./routes/submit');
+var submitLogin = require('./routes/loginSubmit');
+var dashboard = require('./routes/dashboard.js');
 
 var app = express();
 
@@ -25,16 +28,20 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/createAccount', createAccount);
 app.use('/signIn', signIn);
+app.use('/submit', submit);
+app.use('/loginSubmit', submitLogin);
+app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   res.sendFile(`${__dirname}/index.hbs`, (err) => {
-//     if (err) {
-//       console.log(err);
-//       res.end(err.message);
-//     }
-//   });
-// });
+app.use(function(req, res, next) {
+  res.sendFile(`${__dirname}/index.hbs`, (err) => {
+    if (err) {
+      console.log(err);
+      next(createError(404));
+      res.end(err.message);
+    }
+  });
+});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -73,6 +80,5 @@ app.get('/createAccount', (req, res) => {
     }
   });
 });
-
 
 module.exports = app;

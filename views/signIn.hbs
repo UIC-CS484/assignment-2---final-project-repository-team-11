@@ -11,17 +11,40 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+        <style>
+            span.login100-form-title.p-b-26 {
+                color: white;
+                font-size: xx-large;
+            }
+
+            input.input100 {
+                color: black;
+                width: 50%;
+                padding: 5px;
+                margin: 5px;
+                background-color: white;
+            }
+
+            button.login100-form-btn {
+                margin-top: 10px;
+            }
+
+            .text-center.p-t-115 {
+                margin-top: 10px;
+            }
+        </style>
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">Hyperspace</a>
+				<a href="/signIn" class="title">Sign In</a>
 				<nav>
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="generic.html" class="active">Generic</a></li>
-						<li><a href="elements.html">Elements</a></li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/signIn" class="active">Sign in</a></li>
+						<li><a href="/createAccount">Create an Account</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -32,11 +55,51 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">A Generic Page</h1>
-							<span class="image fit"><img src="" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-						</div>
+							<h1 class="major">Sign in to your account</h1>
+                            <form method="POST" action="/loginSubmit" class="login100-form validate-form">
+                                <span class="login100-form-title p-b-26">
+                                    Welcome
+                                </span>
+                                <span class="login100-form-title p-b-48">
+                                    <i class="zmdi zmdi-font"></i>
+                                </span>
+
+                                <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                                    <h3> Enter your email: </h3>
+                                    <input class="input100" type="text" name="email" placeholder="email">
+                                    <span class="focus-input100" data-placeholder="Email"></span>
+                                </div>
+
+                                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                                    <span class="btn-show-pass">
+                                        <i class="zmdi zmdi-eye"></i>
+                                    </span>
+                                     <h3> Enter your password: </h3>
+                                    <input class="input100" type="password" name="password" placeholder="password">
+                                    <span class="focus-input100" data-placeholder="Password"></span>
+                                </div>
+
+                                <div class="container-login100-form-btn">
+                                    <div class="wrap-login100-form-btn">
+                                        <div class="login100-form-bgbtn"></div>
+                                        <button class="login100-form-btn">
+                                            Login
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="text-center p-t-115">
+                                    <span class="txt1">
+                                        Don’t have an account?
+                                    </span>
+
+                                    <a class="txt2" href="/createAccount">
+                                        Sign Up
+                                    </a>
+                                </div>
+                            </form>
+
+                        </div>
 					</section>
 
 			</div>
@@ -45,7 +108,7 @@
 			<footer id="footer" class="wrapper alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; CS 484 Team 11. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -58,6 +121,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+            <script src="javascripts/main.js"></script>
 
 	</body>
 </html>
