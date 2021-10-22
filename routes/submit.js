@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var passwordValidator = require('password-validator');
 
 
 /* GET home page. */
@@ -13,22 +14,40 @@ router.post('/', function(req, res, next) {
 
     //Enforcing Strong Password 
     //If password does not contain a capital letter or a number display error
-    for(var i = 0; i < password.length; i++)
-    {       
-        var letter = password[i];
+    // for(var i = 0; i < password.length; i++)
+    // {       
+    //     var letter = password[i];
         
-        //No capital letters/special characters in the password
-        if(!(letter === letter.toUpperCase()))
-        {
-            var incorrect = "Password does not contain any special characters";
-            res.render('error', {error:incorrect});
-        }
-    }
+    //     //No capital letters/special characters in the password
+    //     if(!(letter === letter.toUpperCase()))
+    //     {
+    //         var incorrect = "Password does not contain any special characters";
+    //         res.render('error', {error:incorrect});
+    //     }
+    // }
 
-    if (password.length < 8){
-        var error = "Password not long enough";
+    var schema = new passwordValidator();
+
+    schema
+        .is().min(8)
+        .is().max(100)
+        .has.uppercase()
+        .has.digits()
+        .has.not.spaces()
+
+    var isValid = schema.validate(password)
+    console.log(isValid)
+
+    if(isValid===false)
+    {
+        var error = "Password is not strong";
         res.render('error', {error:error});
     }
+
+    // if (password.length < 8){
+    //     var error = "Password not long enough";
+    //     res.render('error', {error:error});
+    // }
 
     else{
         console.log("first_name: " + first_name + "last_name: " + last_name + " Email: " + email + " Password: " + password);
