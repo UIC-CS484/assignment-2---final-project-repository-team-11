@@ -81,4 +81,13 @@ app.get('/createAccount', (req, res) => {
   });
 });
 
+app.get('/error', (req, res) => {
+  res.sendFile(`${__dirname}/error.hbs`, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err.message);
+    }
+  });
+});
+
 module.exports = app;
