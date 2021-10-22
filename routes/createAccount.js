@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     var anObject = {
         "date": date
     }
-    res.render('createAccount', {anObject});
+    res.render('createAccount', {anObject, title: 'Create Account'});
 });
 
 module.exports = router;

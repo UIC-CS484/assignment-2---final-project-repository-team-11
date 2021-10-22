@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var createAccount = require('./routes/createAccount');
+var signIn = require('./routes/signIn');
 
 var app = express();
 
@@ -21,16 +23,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/createAccount', createAccount);
+app.use('/signIn', signIn);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  res.sendFile(`${__dirname}/index.hbs`, (err) => {
-    if (err) {
-      console.log(err);
-      res.end(err.message);
-    }
-  });
-});
+// app.use(function(req, res, next) {
+//   res.sendFile(`${__dirname}/index.hbs`, (err) => {
+//     if (err) {
+//       console.log(err);
+//       res.end(err.message);
+//     }
+//   });
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -42,5 +46,33 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/index.hbs`, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err.message);
+    }
+  });
+});
+
+app.get('/signIn', (req, res) => {
+  res.sendFile(`${__dirname}/signIn.hbs`, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err.message);
+    }
+  });
+});
+
+app.get('/createAccount', (req, res) => {
+  res.sendFile(`${__dirname}/createAccount.hbs`, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err.message);
+    }
+  });
+});
+
 
 module.exports = app;
