@@ -1,6 +1,5 @@
 
-
-var testingFunction = require('./submit.js');
+var testingFunction = require('./routes/submit.js');
 
 
 describe("testing assignment2 strength of password functionality", ()=>{
@@ -20,4 +19,4 @@ describe("testing assignment2 strength of password functionality", ()=>{
     //     expect(aValue).toMatch("false");
     // })
 
-})
+});
