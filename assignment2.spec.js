@@ -1,14 +1,10 @@
-var express = require('express');
-var router = express.Router();
+var passwordValidator = require('password-validator');
 
 //Testing the strength of a password
 
-test("Testing createAccount url ", done ()=>
+test("Testing strength of password ",  ()=>
 {
-    function callback(done)
-    {
-        expect(data).toBe("\index.js");
-        done();
-    }
-
+    var value = 
+    
+    
 })
