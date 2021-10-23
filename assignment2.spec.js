@@ -1,10 +1,14 @@
-const { ExpectationFailed } = require('http-errors');
-const { TestWatcher } = require('jest');
-var passwordValidator = require('password-validator');
+var express = require('express');
+var router = express.Router();
 
 //Testing the strength of a password
 
-test("Testing createAccount url ", ()=>
+test("Testing createAccount url ", done ()=>
 {
-    
+    function callback(done)
+    {
+        expect(data).toBe("\index.js");
+        done();
+    }
+
 })
