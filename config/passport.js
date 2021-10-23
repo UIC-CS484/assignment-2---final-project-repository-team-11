@@ -15,7 +15,8 @@ passport.use(new LocalStrategy({
     for (var index = 0; index < users.length; ++index) {
 
         var user = users[index];
-        console.log(user.email);
+        console.log(`here email is: ${user.email}`);
+        console.log(`but email is: ${username}`);
         if(user.email == username && user.password == password){
 			
           done(null, user);
