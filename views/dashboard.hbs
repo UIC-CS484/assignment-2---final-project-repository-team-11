@@ -43,6 +43,15 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1>Welcome back {{userInfo.first_name}}  {{userInfo.last_name}}!</h1>
+							<a onClick = "getTopContrib(); getTopIndustries();" class="button primary">Click to show data</a>
+						</div>
+
+						<div section id="one" class="inner wrapper style2 spotlights">
+							<canvas id="topContrib"></canvas>
+						</div>
+
+						<div section id="two" class="inner wrapper style2 spotlights">
+							<canvas id="topIndustry"></canvas>
 						</div>
 					</section>
 
@@ -58,6 +67,94 @@
 			</footer>
 
 		<!-- Scripts -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script>
+			function getTopContrib() {
+				console.log("getting top contributors");
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						let labels = [];
+						let data = {
+							labels: labels, 
+							datasets: [{
+								label: 'Top Contributors to Candidate', 
+								data: [], 
+								backgroundColor: 'rgb(67, 170, 139)',
+								borderColor: 'rgb(205, 137, 135)',
+								borderWidth: 3
+							}]
+						};
+
+						let output = JSON.parse(this.responseText).response.contributors.contributor;
+						for (let i = 0; i < output.length; i++) {
+							labels.push(String(output[i]['@attributes'].org_name));
+							data.datasets[0].data.push(output[i]['@attributes'].total);
+						}
+
+						const config = {
+							type: 'bar', 
+							data: data,
+							options: {
+								scales: {
+									y: {
+										beginAtZero: true,
+									},
+								}
+							}
+						};
+						const myChart = new Chart(document.getElementById('topContrib'),config);
+						document.getElementById('topContrib').style.backgroundColor = "white";
+					}
+				};
+				xhttp.open("GET", "https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=2ee5a4893d2016c62994c610d8575063&output=json", true);
+				xhttp.send();
+			}
+
+			function getTopIndustries() {
+				console.log("getting top industries");
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						let labels = [];
+						let data = {
+							labels: labels, 
+							datasets: [{
+								label: 'Top Industries Contributing to Candidate', 
+								data: [], 
+								backgroundColor: 'rgb(95, 191, 2497)',
+								borderColor: 'rgb(205, 137, 135)',
+								borderWidth: 3
+							}]
+						};
+
+						let output = JSON.parse(this.responseText).response.industries.industry;
+						for (let i = 0; i < output.length; i++) {
+							labels.push(String(output[i]['@attributes'].industry_name));
+							data.datasets[0].data.push(output[i]['@attributes'].total);
+						}
+
+						const config = {
+							type: 'bar', 
+							data: data,
+							options: {
+								scales: {
+									y: {
+										beginAtZero: true,
+									},
+								}
+							}
+						};
+						const myChart = new Chart(document.getElementById('topIndustry'),config);
+						document.getElementById('topIndustry').style.backgroundColor = "white";
+					}
+				};
+				xhttp.open("GET", "https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=2020&apikey=2ee5a4893d2016c62994c610d8575063&output=json", true);
+				xhttp.send();
+			}
+		</script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
