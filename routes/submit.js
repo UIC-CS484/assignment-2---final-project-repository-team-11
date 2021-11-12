@@ -3,6 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var passwordValidator = require('password-validator');
 
+
 /* GET home page. */
 router.post('/', function(req, res, next) {
     
