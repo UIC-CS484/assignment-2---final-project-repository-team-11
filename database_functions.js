@@ -17,7 +17,7 @@ let db = new sqlite3.Database('./database.sqlite', (err) => {
 
 //Create a User
 let createUser = (id, first_name, last_name, email, password) =>{
-	var createUserSql ='INSERT INTO users (ID, first_name, last_name, email, password) VALUES (?,?,?)'
+	var createUserSql ='INSERT INTO USER (ID, first_name, last_name, email, password) VALUES (?,?,?,?,?)'
 	var params =[null, first_name, last_name, email, password];
 
 	db.run(createUserSql, params, function(err){
@@ -28,6 +28,8 @@ let createUser = (id, first_name, last_name, email, password) =>{
 		console.log(`Rows inserted ${this.changes}`);	  
 	});
 }
-createUser(null, "Gurleen", "Kaur", "testing123@uic.edu", "password")
+
+
+
 
 module.exports = {createUser};
