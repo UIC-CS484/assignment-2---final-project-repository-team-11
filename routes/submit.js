@@ -3,6 +3,9 @@ var router = express.Router();
 var fs = require('fs');
 var passwordValidator = require('password-validator');
 
+var databaseFunction = require("../database_functions.js");
+const bcrypt = require('bcryptjs');
+
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
@@ -43,6 +46,12 @@ router.post('/', function(req, res, next) {
             password: password
         }];
         
+        //Hashes the password 
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        //Adds information to the database 
+        databaseFunction.createUser(id, first_name, last_name, email, hashedPassword);
+
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);
 
