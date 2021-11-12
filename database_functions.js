@@ -29,7 +29,46 @@ let createUser = (id, first_name, last_name, email, password) =>{
 	});
 }
 
+//Retrieve a User by first_name
+let retrieveUser = (first_name) =>{
+	var retrieveUserSql ='SELECT * FROM USER WHERE first_name = ?'
+	var params =[first_name];
 
+	db.run(retrieveUserSql, params, function(err){
+		if (err){
+			return console.log(err.message);
+		}
+		console.log("User Found");
+		console.log(`Retrieved user information ${this.changes}`);	  
+	});
+}
 
+//Update user information based on given id 
+let updateUser = (id, first_name, last_name, email) =>{
+	var updateUserSql ='UPDATE USER SET first_name = ?, last_name = ?, email = ? WHERE id = ?'
+	var params =[first_name];
+
+	db.run(updateUserSql, params, function(err){
+		if (err){
+			return console.log(err.message);
+		}
+		console.log("User Found, updated information");
+		console.log(`Updated user information ${this.changes}`);	  
+	});
+}
+
+//Delete User Information 
+let deleteUser = (id) =>{
+	var deleteUserSql ='DELETE FROM USERS WHERE id = ?'
+	var params =[id];
+
+	db.run(deleteUserSql, params, function(err){
+		if (err){
+			return console.log(err.message);
+		}
+		console.log("User found and deleted");
+		console.log(`Deleted user information ${this.changes}`);	  
+	});
+}
 
 module.exports = {createUser};
