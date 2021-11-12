@@ -47,7 +47,8 @@ router.post('/', function(req, res, next) {
         }];
         
         //Hashes the password 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = bcrypt.hash(password, 10);
+        console.log("This is the hashed password", hashedPassword);
 
         //Adds information to the database 
         databaseFunction.createUser(id, first_name, last_name, email, hashedPassword);
