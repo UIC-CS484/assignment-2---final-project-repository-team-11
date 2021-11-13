@@ -19,3 +19,4 @@ Our project uses Chart.js to display data received from the API as bar graphs. W
 > > operations within our project
 
 
+[ERD DIAGRAM](https://lucid.app/lucidchart/551dc7ae-66f9-415e-aa19-549773ecf91e/edit?viewport_loc=-232%2C-11%2C2219%2C1065%2C0_0&invitationId=inv_ce698ca7-b8c7-4a7c-bd23-18b52956344d)
