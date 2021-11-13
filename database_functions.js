@@ -17,7 +17,7 @@ let db = new sqlite3.Database('./database.sqlite', (err) => {
 
 //Create a Members Table
 let createMember = (id, CID, CRPName) =>{
-	var memberUserSql ='INSERT INTO USER (ID, CID, CRPName) VALUES (?,?,?)'
+	var memberUserSql ='INSERT INTO MEMBER (ID, CID, CRPName) VALUES (?,?,?)'
 	var params =[null, CID, CRPName];
 
 	db.run(memberUserSql, params, function(err){
@@ -31,7 +31,7 @@ let createMember = (id, CID, CRPName) =>{
 
 //Create CRP Industry Codes Table
 let createCRP = (id, Catname, Catorder) =>{
-	var crpSql ='INSERT INTO USER (ID, Catname, Catoder) VALUES (?,?,?)'
+	var crpSql ='INSERT INTO CRP (ID, Catname, Catoder) VALUES (?,?,?)'
 	var params =[null, Catname, Catorder];
 
 	db.run(crpSql, params, function(err){
