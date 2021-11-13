@@ -5,6 +5,7 @@ var passwordValidator = require('password-validator');
 
 var databaseFunction = require("../database_functions.js");
 const bcrypt = require('bcryptjs');
+const { Console } = require('console');
 
 
 /* GET home page. */
@@ -26,6 +27,7 @@ router.post('/', function(req, res, next) {
 
     var isValid = schema.validate(password)
     console.log(isValid)
+    
 
     if(isValid===false)
     {
@@ -46,12 +48,12 @@ router.post('/', function(req, res, next) {
             password: password
         }];
         
-        //Hashes the password 
-        const hashedPassword = bcrypt.hash(password, 10);
-        console.log("This is the hashed password", hashedPassword);
+        //Hashes the password     
+        var hashedPassword = bcrypt.hashSync(password, 10);
+        console.log("hashed password" + hashedPassword);
 
         //Adds information to the database 
-        databaseFunction.createUser(id, first_name, last_name, email, hashedPassword);
+        databaseFunction.createUser(users[0].id, first_name, last_name, email, hashedPassword);
 
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);

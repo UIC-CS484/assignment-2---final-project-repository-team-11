@@ -71,4 +71,4 @@ let deleteUser = (id) =>{
 	});
 }
 
-module.exports = {createUser};
+module.exports = {createUser, retrieveUser, updateUser, deleteUser};

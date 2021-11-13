@@ -26,7 +26,7 @@ var session_config = {
 		resave: true, //nables the session to be stored back to the session store, even if the session was never modified during the request
 		saveUninitialized: true, //his allows any uninitialized session to be sent to the store. When a session is created but not modified, it is referred to as uninitialized.
 		cookie: { secure: true }, //true is a recommended option. However, it requires an https-enabled website
-		//store  parameter when saving session to database
+		//store parameter when saving session to database
     store: new SQLiteStore
 };
 
