@@ -1,5 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
-let databaseOperations = require('../users.json');
+//let databaseOperations = require('../users.json');
 
 
 module.exports = function(passport) {
@@ -10,21 +10,21 @@ passport.use(new LocalStrategy({
 	passwordField: 'password'
 }, function(username, password, done) {
 
-    var users = databaseOperations
+    // var users = databaseOperations
     
-    for (var index = 0; index < users.length; ++index) {
+    // for (var index = 0; index < users.length; ++index) {
 
-        var user = users[index];
-        console.log(`here email is: ${user.email}`);
-        console.log(`but email is: ${username}`);
-        if(user.email == username && user.password == password){
+    //     var user = users[index];
+    //     console.log(`here email is: ${user.email}`);
+    //     console.log(`but email is: ${username}`);
+    //     if(user.email == username && user.password == password){
 			
-          done(null, user);
-        }
-        else{
-          done(null, false);
-        }
-    }
+    //       done(null, user);
+    //     }
+    //     else{
+    //       done(null, false);
+    //     }
+    // }
 }));
 
 passport.serializeUser(function(user, done) {
