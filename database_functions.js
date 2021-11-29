@@ -44,9 +44,9 @@ let createCRP = (id, Catname, Catorder) =>{
 }
 
 //Create a User
-let createUser = (id, first_name, last_name, email, password) =>{
-	var createUserSql ='INSERT INTO USER (ID, first_name, last_name, email, password) VALUES (?,?,?,?,?)'
-	var params =[null, first_name, last_name, email, password];
+let createUser = (id, first_name, last_name, email, password, street, city, state) =>{
+	var createUserSql ='INSERT INTO USER (ID, first_name, last_name, email, password, street, city, state) VALUES (?,?,?,?,?,?,?,?)'
+	var params =[null, first_name, last_name, email, password, street, city, state];
 
 	db.run(createUserSql, params, function(err){
 		if (err){

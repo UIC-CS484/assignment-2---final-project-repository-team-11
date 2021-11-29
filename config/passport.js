@@ -1,38 +1,34 @@
 const LocalStrategy = require('passport-local').Strategy;
-//let databaseOperations = require('../users.json');
+// let databaseOperations = require('../users.json');
+let db = require('../database_functions.js');
 
 
-module.exports = function(passport) {
-console.log("Passport Function triggered");
-//Passport pulls the the name variables from the name attribute in login form.  If different, you need to use whats on lines 10 and 11
-passport.use(new LocalStrategy({
-	usernameField: 'email',
-	passwordField: 'password'
-}, function(username, password, done) {
+module.exports = function (passport) {
+  console.log('passport authentication');
+  passport.use(new LocalStrategy(
+    function(username, password, done) {
+      db.get('SELECT * FROM USER WHERE username = ?', username, function(err, row) {
+        if (!row) {
+          return done(null, false, { message: 'Wrong credentials.' });
+        }
+        if (bcrypt.compareSync(password, row.password)) {
+          return done(null, row);
+        } else {
+          return done(null, false, { message: 'Wrong credentials..' });
+        }
+      });
+    }
+  ));
 
-    // var users = databaseOperations
-    
-    // for (var index = 0; index < users.length; ++index) {
+  passport.serializeUser(function(user, done) {
+    console.log('passport.serializeUser')
+    console.log(user)
+    return done(null, user.id);
+  });
 
-    //     var user = users[index];
-    //     console.log(`here email is: ${user.email}`);
-    //     console.log(`but email is: ${username}`);
-    //     if(user.email == username && user.password == password){
-			
-    //       done(null, user);
-    //     }
-    //     else{
-    //       done(null, false);
-    //     }
-    // }
-}));
-
-passport.serializeUser(function(user, done) {
-	done(null, user); 
-});
-
-passport.deserializeUser(function(user, done) {
-	done(null, user); //you can access with req.user
-});
-
-}
+  passport.deserializeUser(function(user, done) {
+    console.log('passport.deserializeUser')
+    console.log(id)
+    done(null,user);
+  });
+};
