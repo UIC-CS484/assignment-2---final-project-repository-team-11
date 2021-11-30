@@ -15,9 +15,9 @@ router.post('/', function(req, res, next) {
     var last_name = req.body.last_name;
     var email = req.body.email;
     var password = req.body.password;
-    var street = req.body.street;
-    var city = req.body.city;
-    var state = req.body.state;
+    var senator1 = req.body.sen1;
+    var senator2 = req.body.sen2;
+    var rep = req.body.rep;
 
     //Enforcing strong password
     var schema = new passwordValidator();
@@ -49,9 +49,9 @@ router.post('/', function(req, res, next) {
             last_name: last_name, 
             email: email,
             password: password,
-            street: street,
-            city: city,
-            state: state
+            senator1: senator1,
+            senator2: senator2,
+            rep: rep
         }];
         
         //Hashes the password     
@@ -59,8 +59,8 @@ router.post('/', function(req, res, next) {
         console.log("hashed password" + hashedPassword);
 
         //Adds information to the database 
-        databaseFunction.createUser(users[0].id, first_name, last_name, email, hashedPassword, street, city, state);
-        
+        databaseFunction.createUser(users[0].id, first_name, last_name, email, hashedPassword, senator1, senator2, rep);
+
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);
 
