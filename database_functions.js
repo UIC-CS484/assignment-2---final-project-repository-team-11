@@ -58,9 +58,9 @@ let createUser = (id, first_name, last_name, email, password, street, city, stat
 }
 
 //Retrieve a User by first_name
-let retrieveUser = (first_name) =>{
-	var retrieveUserSql ='SELECT * FROM USER WHERE first_name = ?'
-	var params =[first_name];
+let retrieveUser = (email) =>{
+	var retrieveUserSql ='SELECT * FROM USER WHERE email = ?'
+	var params =[email];
 
 	db.run(retrieveUserSql, params, function(err){
 		if (err){

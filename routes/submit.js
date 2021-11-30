@@ -60,7 +60,7 @@ router.post('/', function(req, res, next) {
 
         //Adds information to the database 
         databaseFunction.createUser(users[0].id, first_name, last_name, email, hashedPassword, street, city, state);
-
+        
         let data = JSON.stringify(users);
         fs.writeFileSync('users.json', data);
 

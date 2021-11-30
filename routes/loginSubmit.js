@@ -6,7 +6,10 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	console.log("here");
+	console.log("here1");
+	//console.log(req.user)
+
+	//res.render('dashboard')
 	passport.authenticate('local', {
 		successRedirect: '/dashboard',
 		failureRedirect: '/'
