@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [{"id":44.44036429554815,"first_name":"Gurleen","last_name":"Kaur","email":"123@abc.com","password":"1234567890A"}]
 =======
 [{"id":68.85602971595274,"first_name":"star","last_name":"trek","email":"startrek@uic.edu","password":"Password12"},
 {"id":9.637915092741247,"first_name":"Gurleen","last_name":"Kaur","email":"gurleenk4.23@gmail.com","password":"1234567890A"}]
 
 >>>>>>> d61713048c13f829869a458c469a7ccedfa0f29d
+=======
+[{"id":52.54549193739674,"first_name":"Sam","last_name":"Johnson","email":"samJ@uic.edu","password":"Password3!","senator1":"Tammy Duckworth","senator2":"Richard Durbin","rep":"Baldwin"}]
+>>>>>>> a057a249261e53588372092fcf192489e9ea1c8c

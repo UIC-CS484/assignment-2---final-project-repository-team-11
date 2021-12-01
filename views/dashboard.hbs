@@ -43,12 +43,12 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1>Welcome back {{userInfo.first_name}}  {{userInfo.last_name}}!</h1>
-							<a onClick = "getTopContrib({{userInfo.first_name}}); getTopContrib(); getTopIndustries(); getTopIndustries();" class="button large">Click to show Senators data</a>
-							<a onClick = "getTopContrib(); getTopIndustries();" class="button large">Click to show House Legislator data</a>
+							<a onClick = "getTopContrib(); getTopIndustries(); getNews('{{userInfo.senator1}}');" class="button primary">Click to show data</a>
 						</div>
 
 						<div section id="one" class="inner wrapper style2 spotlights">
 							<canvas id="topContrib"></canvas>
+							<div id = "news"></div>
 						</div>
 
 						<div section id="two" class="inner wrapper style2 spotlights">
@@ -158,6 +158,40 @@
 				var cid;
 				var cycle = "2020";
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.send();
+			}
+
+			function getNews(sen) {
+				console.log("getting news");
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					console.log(this.readyState, this.status)
+
+					if (this.readyState == 4 && this.status == 200) {
+						console.log("inside if");
+
+						let output = JSON.parse(this.responseText);
+						let num = output.totalResults;
+						console.log("num is: " + num);
+						
+						num = num < 5 ? num : 5;
+						let articles = output.articles;
+						for (let i = 0; i < num; i++) {
+							var curArticle = articles[i];
+							console.log(curArticle.url);
+							console.log(curArticle.source.name);
+							console.log(curArticle.title);
+							var node = document.createElement("DIV");                 // Create a <li> node
+							node.innerHTML = `<a href = ${curArticle.url}><h4>${curArticle.source.name}: </h4> <h5>${curArticle.title}</h5</a> `;         // Create a text node
+							//node.appendChild(textNode);
+							var news = document.getElementById('news');
+							news.appendChild(node);
+						}
+					}
+				};
+				var apiKey;
+				var sen = sen;
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
 				xhttp.send();
 			}
 		</script>

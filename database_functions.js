@@ -44,23 +44,25 @@ let createCRP = (id, Catname, Catorder) =>{
 }
 
 //Create a User
-let createUser = (id, first_name, last_name, email, password) =>{
-	var createUserSql ='INSERT INTO USER (ID, first_name, last_name, email, password) VALUES (?,?,?,?,?)'
-	var params =[null, first_name, last_name, email, password];
+let createUser = (id, first_name, last_name, email, password, senator1, senator2, rep) =>{
+	var createUserSql ='INSERT INTO USER (ID, first_name, last_name, email, password, senator1, senator2, rep) VALUES (?,?,?,?,?,?,?,?)'
+	var params =[null, first_name, last_name, email, password, senator1, senator2, rep];
 
 	db.run(createUserSql, params, function(err){
 		if (err){
 			return console.log(err.message);
 		}
+		
+
 		console.log("User Created");
 		console.log(`Rows inserted ${this.changes}`);	  
 	});
 }
 
 //Retrieve a User by first_name
-let retrieveUser = (first_name) =>{
-	var retrieveUserSql ='SELECT * FROM USER WHERE first_name = ?'
-	var params =[first_name];
+let retrieveUser = (email) =>{
+	var retrieveUserSql ='SELECT * FROM USER WHERE email = ?'
+	var params =[email];
 
 	db.run(retrieveUserSql, params, function(err){
 		if (err){
@@ -70,6 +72,29 @@ let retrieveUser = (first_name) =>{
 		console.log(`Retrieved user information ${this.changes}`);	  
 	});
 }
+
+// //Retrieve a User by first_name
+// let retrieveSenator = (senator1) =>{
+// 	var retrieveUserSql ='SELECT CID FROM CID WHERE CRP_Name = ?'
+// 	var retrieveId = `UPDATE USER SET sen1Id = ${retrieveUserSql} WHERE senator1 = ?`
+// 	var params =[senator1];
+
+// 	db.run(retrieveUserSql, params, function(err){
+// 		if (err){
+// 			return console.log(err.message);
+// 		}
+// 		console.log("Senator Found");
+// 		console.log(`Retrieved user information ${this.changes}`);	  
+// 	});
+
+// 	db.run(retrieveId, params, function(err){
+// 		if (err){
+// 			return console.log(err.message);
+// 		}
+// 		console.log("Senator Found");
+// 		console.log(`Retrieved user information ${this.changes}`);	  
+// 	});
+// }
 
 //Update user information based on given id 
 let updateUser = (id, first_name, last_name, email) =>{
@@ -99,4 +124,4 @@ let deleteUser = (id) =>{
 	});
 }
 
-module.exports = {createUser, retrieveUser, updateUser, deleteUser};
+module.exports = {db, createUser, retrieveUser, updateUser, deleteUser};
