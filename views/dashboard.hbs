@@ -43,7 +43,8 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1>Welcome back {{userInfo.first_name}}  {{userInfo.last_name}}!</h1>
-							<a onClick = "getTopContrib(); getTopIndustries();" class="button primary">Click to show data</a>
+							<a onClick = "getTopContrib({{userInfo.first_name}}); getTopContrib(); getTopIndustries(); getTopIndustries();" class="button large">Click to show Senators data</a>
+							<a onClick = "getTopContrib(); getTopIndustries();" class="button large">Click to show House Legislator data</a>
 						</div>
 
 						<div section id="one" class="inner wrapper style2 spotlights">
@@ -79,7 +80,7 @@
 						let data = {
 							labels: labels, 
 							datasets: [{
-								label: 'Top Contributors to Candidate', 
+								label: `Top Contributors to ${repName}`, 
 								data: [], 
 								backgroundColor: 'rgb(67, 170, 139)',
 								borderColor: 'rgb(205, 137, 135)',
@@ -108,7 +109,9 @@
 						document.getElementById('topContrib').style.backgroundColor = "white";
 					}
 				};
-				xhttp.open("GET", "https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=2ee5a4893d2016c62994c610d8575063&output=json", true);
+				var apiKey;
+				var cid;
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
 				xhttp.send();
 			}
 
@@ -122,7 +125,7 @@
 						let data = {
 							labels: labels, 
 							datasets: [{
-								label: 'Top Industries Contributing to Candidate', 
+								label: `Top Industries Contributing to ${repName}`, 
 								data: [], 
 								backgroundColor: 'rgb(95, 191, 2497)',
 								borderColor: 'rgb(205, 137, 135)',
@@ -151,7 +154,10 @@
 						document.getElementById('topIndustry').style.backgroundColor = "white";
 					}
 				};
-				xhttp.open("GET", "https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=2020&apikey=2ee5a4893d2016c62994c610d8575063&output=json", true);
+				var apiKey;
+				var cid;
+				var cycle = "2020";
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
 				xhttp.send();
 			}
 		</script>
