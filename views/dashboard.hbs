@@ -46,9 +46,10 @@
 						<div class="inner">
 							<h1>Welcome back {{userInfo.first_name}}  {{userInfo.last_name}}!</h1>
 							<a onClick = "getTopContrib1('{{userInfo.senator1}}'); getTopIndustries1('{{userInfo.senator1}}'); getNews1('{{userInfo.senator1}}'); 
-										  getTopContrib2('{{userInfo.senator2}}'); getTopIndustries2('{{userInfo.senator2}}'); getNews2('{{userInfo.senator2}}');
-										  getTopContrib3('{{userInfo.rep}}'); getTopIndustries3('{{userInfo.rep}}'); getNews3('{{userInfo.rep}}');"
-										  class="button primary">Click to show data</a>
+										  getTopContrib2('{{userInfo.senator2}}'); getTopIndustries2('{{userInfo.senator2}}'); getNews2('{{userInfo.senator2}}');"
+										  class="button primary">Click to show Senators data</a>
+							<a onClick = "getTopContrib3('{{userInfo.rep}}'); getTopIndustries3('{{userInfo.rep}}'); getNews3('{{userInfo.rep}}');"
+							class="button primary">Click to show Rep data</a>
 						</div>
 
 						<div section id="one" class="inner wrapper style2 spotlights">
