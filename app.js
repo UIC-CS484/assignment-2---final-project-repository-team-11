@@ -59,14 +59,13 @@ app.use('/dashboard', dashboard);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
-  /*res.sendFile(`${__dirname}/index.hbs`, (err) => {
+  res.sendFile(`${__dirname}/index.hbs`, (err) => {
     if (err) {
       console.log(err);
       next(createError(404));
       res.end(err.message);
     }
-  });*/
+  });
 });
 
 // error handler
@@ -80,7 +79,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-/**app.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.hbs`, (err) => {
     if (err) {
       console.log(err);
@@ -114,6 +113,6 @@ app.get('/error', (req, res) => {
       res.end(err.message);
     }
   });
-});**/
+});
 
 module.exports = app;
