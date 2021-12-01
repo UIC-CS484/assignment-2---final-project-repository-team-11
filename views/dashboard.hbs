@@ -43,11 +43,12 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1>Welcome back {{userInfo.first_name}}  {{userInfo.last_name}}!</h1>
-							<a onClick = "getTopContrib(); getTopIndustries(); getNews();" class="button primary">Click to show data</a>
+							<a onClick = "getTopContrib(); getTopIndustries(); getNews('{{userInfo.senator1}}');" class="button primary">Click to show data</a>
 						</div>
 
 						<div section id="one" class="inner wrapper style2 spotlights">
 							<canvas id="topContrib"></canvas>
+							<div id = "news"></div>
 						</div>
 
 						<div section id="two" class="inner wrapper style2 spotlights">
@@ -155,10 +156,12 @@
 				xhttp.send();
 			}
 
-			function getNews() {
+			function getNews(sen) {
 				console.log("getting news");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
+					console.log(this.readyState, this.status)
+
 					if (this.readyState == 4 && this.status == 200) {
 						console.log("inside if");
 
@@ -173,15 +176,17 @@
 							console.log(curArticle.url);
 							console.log(curArticle.source.name);
 							console.log(curArticle.title);
-							var node = document.createElement("div");                 // Create a <li> node
-							node.innerhtml = `<a href = ${curArticle.url}><h4>${curArticle.source.name}: </h4> <h5>${curArticle.title}</h5</a> `         // Create a text node
-							document.getElementById('one').appendChild(node);    
+							var node = document.createElement("DIV");                 // Create a <li> node
+							node.innerHTML = `<a href = ${curArticle.url}><h4>${curArticle.source.name}: </h4> <h5>${curArticle.title}</h5</a> `;         // Create a text node
+							//node.appendChild(textNode);
+							var news = document.getElementById('news');
+							news.appendChild(node);
 						}
 					}
 				};
 				var apiKey;
-				var cid;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=tammy duckworth &from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
+				var sen = sen;
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
 				xhttp.send();
 			}
 		</script>

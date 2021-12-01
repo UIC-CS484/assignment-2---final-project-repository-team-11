@@ -52,6 +52,8 @@ let createUser = (id, first_name, last_name, email, password, senator1, senator2
 		if (err){
 			return console.log(err.message);
 		}
+		
+
 		console.log("User Created");
 		console.log(`Rows inserted ${this.changes}`);	  
 	});
@@ -122,4 +124,4 @@ let deleteUser = (id) =>{
 	});
 }
 
-module.exports = {createUser, retrieveUser, updateUser, deleteUser};
+module.exports = {db, createUser, retrieveUser, updateUser, deleteUser};
