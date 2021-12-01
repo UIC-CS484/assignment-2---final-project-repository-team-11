@@ -9,11 +9,11 @@ router.post('/', (req, res, next) => {
 	console.log("here1");
 	//console.log(req.user)
 
-	res.render('dashboard')
-	// passport.authenticate('local', {
-	// 	successRedirect: '/dashboard',
-	// 	failureRedirect: '/'
-	// })(req, res, next);
+	//res.render('dashboard')
+	passport.authenticate('local', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/'
+	})(req, res, next);
 
 
 });
