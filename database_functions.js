@@ -45,8 +45,8 @@ let createCRP = (id, Catname, Catorder) =>{
 
 //Create a User
 let createUser = (id, first_name, last_name, email, password, senator1, senator2, rep) =>{
-	var createUserSql ='INSERT INTO USER (ID, first_name, last_name, email, password, senator1, senator2, rep, sen1Id, sen2Id, repId) VALUES (?,?,?,?,?,?,?,?)'
-	var params =[null, first_name, last_name, email, password, senator1, senator2, rep, null, null, null];
+	var createUserSql ='INSERT INTO USER (ID, first_name, last_name, email, password, senator1, senator2, rep) VALUES (?,?,?,?,?,?,?,?)'
+	var params =[null, first_name, last_name, email, password, senator1, senator2, rep];
 
 	db.run(createUserSql, params, function(err){
 		if (err){
@@ -71,28 +71,28 @@ let retrieveUser = (email) =>{
 	});
 }
 
-//Retrieve a User by first_name
-let retrieveSenator = (senator1) =>{
-	var retrieveUserSql ='SELECT CID FROM CID WHERE CRP_Name = ?'
-	var retrieveId = `UPDATE USER SET sen1Id = ${retrieveUserSql} WHERE senator1 = ?`
-	var params =[senator1];
+// //Retrieve a User by first_name
+// let retrieveSenator = (senator1) =>{
+// 	var retrieveUserSql ='SELECT CID FROM CID WHERE CRP_Name = ?'
+// 	var retrieveId = `UPDATE USER SET sen1Id = ${retrieveUserSql} WHERE senator1 = ?`
+// 	var params =[senator1];
 
-	db.run(retrieveUserSql, params, function(err){
-		if (err){
-			return console.log(err.message);
-		}
-		console.log("Senator Found");
-		console.log(`Retrieved user information ${this.changes}`);	  
-	});
+// 	db.run(retrieveUserSql, params, function(err){
+// 		if (err){
+// 			return console.log(err.message);
+// 		}
+// 		console.log("Senator Found");
+// 		console.log(`Retrieved user information ${this.changes}`);	  
+// 	});
 
-	db.run(retrieveId, params, function(err){
-		if (err){
-			return console.log(err.message);
-		}
-		console.log("Senator Found");
-		console.log(`Retrieved user information ${this.changes}`);	  
-	});
-}
+// 	db.run(retrieveId, params, function(err){
+// 		if (err){
+// 			return console.log(err.message);
+// 		}
+// 		console.log("Senator Found");
+// 		console.log(`Retrieved user information ${this.changes}`);	  
+// 	});
+// }
 
 //Update user information based on given id 
 let updateUser = (id, first_name, last_name, email) =>{
