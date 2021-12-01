@@ -16,7 +16,6 @@
             .col-2 {
                 margin: 5px;
             }
-
             button.btn.btn--radius-2.btn--blue {
                 margin-top: 15px;
             }
@@ -58,6 +57,7 @@
 
 						<div section id="two" class="inner wrapper style2 spotlights">
 							<canvas id="topIndustry1"></canvas>
+<<<<<<< HEAD
 						</div>
 
 						<div id = "news1" class="inner wrapper style2 spotlights"></div>
@@ -67,6 +67,17 @@
 							<canvas id="topContrib2"></canvas>
 						</div>
 
+=======
+						</div>
+
+						<div id = "news1" class="inner wrapper style2 spotlights"></div>
+
+
+						<div section id="one" class="inner wrapper style2 spotlights">
+							<canvas id="topContrib2"></canvas>
+						</div>
+
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						<div section id="two" class="inner wrapper style2 spotlights">
 							<canvas id="topIndustry2"></canvas>
 						</div>
@@ -99,6 +110,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script>
 			function getTopContrib1(sen) {
+<<<<<<< HEAD
 				console.log("getting top contributors");
 
 				var xhttp = new XMLHttpRequest();
@@ -144,8 +156,9 @@
 			}
 		
 		function getTopContrib2(sen) {
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				console.log("getting top contributors");
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -160,13 +173,67 @@
 								borderWidth: 3
 							}]
 						};
-
 						let output = JSON.parse(this.responseText).response.contributors.contributor;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].org_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
+						const config = {
+							type: 'bar', 
+							data: data,
+							options: {
+								scales: {
+									y: {
+										beginAtZero: true,
+									},
+								}
+							}
+						};
+<<<<<<< HEAD
+						const myChart = new Chart(document.getElementById('topContrib2'),config);
+						document.getElementById('topContrib2').style.backgroundColor = "white";
+=======
+						const myChart = new Chart(document.getElementById('topContrib1'),config);
+						document.getElementById('topContrib1').style.backgroundColor = "white";
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
+					}
+				};
+				var apiKey;
+				var cid;
+<<<<<<< HEAD
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004981&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.send();
+			}
 
+			function getTopContrib3(rep) {
+				console.log("getting top contributors");
+
+=======
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.send();
+			}
+		
+		function getTopContrib2(sen) {
+				console.log("getting top contributors");
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						let labels = [];
+						let data = {
+							labels: labels, 
+							datasets: [{
+								label: `Top Contributors to ${sen}`, 
+								data: [], 
+								backgroundColor: 'rgb(67, 170, 139)',
+								borderColor: 'rgb(205, 137, 135)',
+								borderWidth: 3
+							}]
+						};
+						let output = JSON.parse(this.responseText).response.contributors.contributor;
+						for (let i = 0; i < output.length; i++) {
+							labels.push(String(output[i]['@attributes'].org_name));
+							data.datasets[0].data.push(output[i]['@attributes'].total);
+						}
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -187,10 +254,9 @@
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004981&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
 				xhttp.send();
 			}
-
 			function getTopContrib3(rep) {
 				console.log("getting top contributors");
-
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -205,13 +271,19 @@
 								borderWidth: 3
 							}]
 						};
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						let output = JSON.parse(this.responseText).response.contributors.contributor;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].org_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -232,10 +304,12 @@
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004884&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
 				xhttp.send();
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 			function getTopIndustries1(sen) {
 				console.log("getting top industries");
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -250,13 +324,11 @@
 								borderWidth: 3
 							}]
 						};
-
 						let output = JSON.parse(this.responseText).response.industries.industry;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].industry_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
-
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -278,10 +350,15 @@
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
 				xhttp.send();
 			}
+<<<<<<< HEAD
 
 			function getTopIndustries2(sen) {
 				console.log("getting top industries");
 
+=======
+			function getTopIndustries2(sen) {
+				console.log("getting top industries");
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -296,13 +373,19 @@
 								borderWidth: 3
 							}]
 						};
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						let output = JSON.parse(this.responseText).response.industries.industry;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].industry_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -324,10 +407,15 @@
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004981&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
 				xhttp.send();
 			}
+<<<<<<< HEAD
 
 			function getTopIndustries3(rep) {
 				console.log("getting top industries");
 
+=======
+			function getTopIndustries3(rep) {
+				console.log("getting top industries");
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -342,13 +430,19 @@
 								borderWidth: 3
 							}]
 						};
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						let output = JSON.parse(this.responseText).response.industries.industry;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].industry_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -370,16 +464,13 @@
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004884&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
 				xhttp.send();
 			}
-
 			function getNews1(sen) {
 				console.log("getting news");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					console.log(this.readyState, this.status)
-
 					if (this.readyState == 4 && this.status == 200) {
 						console.log("inside if");
-
 						let output = JSON.parse(this.responseText);
 						let num = output.totalResults;
 						console.log("num is: " + num);
@@ -404,16 +495,13 @@
 				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
 				xhttp.send();
 			}
-
 			function getNews2(sen) {
 				console.log("getting news");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					console.log(this.readyState, this.status)
-
 					if (this.readyState == 4 && this.status == 200) {
 						console.log("inside if");
-
 						let output = JSON.parse(this.responseText);
 						let num = output.totalResults;
 						console.log("num is: " + num);
@@ -438,16 +526,13 @@
 				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
 				xhttp.send();
 			}
-
 			function getNews3(rep) {
 				console.log("getting news");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					console.log(this.readyState, this.status)
-
 					if (this.readyState == 4 && this.status == 200) {
 						console.log("inside if");
-
 						let output = JSON.parse(this.responseText);
 						let num = output.totalResults;
 						console.log("num is: " + num);
