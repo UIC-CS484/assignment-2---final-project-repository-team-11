@@ -1,9 +1,9 @@
 ## [Bootstrap source](https://html5up.net/hyperspace)
 ----
 
-**1. Site Mission:**
+1. **Site Mission:**
     Allow users to become more familiar with the lobbying firms and funds that their representatives engage with. 
-**2. Team Members and Roles:**
+2. **Team Members and Roles:**
     1. Gurleen K.
         a. Implemented HTML and CSS handlebars and bootstrap frameworks.
         b. Worked on implementing API calls and visualizing data using Chart.js
@@ -11,20 +11,20 @@
         a. Implemented user authentication using passport.js
         b. Designed unit tests to verify secure password implementation
         c. Created and maintained database storing user account information
-**3. Site Goals:**
+3. **Site Goals:**
     1. Inspire users to become more politically engaged and informed on the assignments and bills their representatives champion
     2. Recognize financial incentives legislators may have that may impact how they execute their legislatives roles and responsibilities
-**4. API Code Snippets**
+4. **API Code Snippets**
     ```js
     xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=${apikey}&output=json`, true);
     xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=${apikey}&output=json`, true);
     xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=${apikey}`, true);
     ```
-**5. Tools and Resources Used:**
+5. **Tools and Resources Used:**
     1. [HTML5UP.net](https://html5up.net/)
     2. [Open Secrets](https://www.opensecrets.org/open-data/api-documentation)
     3. [News API](https://newsapi.org/)
-**6. [Site URL]()**
+6. **[Site URL]()**
 
 > Assignment 3
 > > ## Requirement 4: 
