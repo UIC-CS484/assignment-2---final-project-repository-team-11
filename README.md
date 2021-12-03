@@ -5,12 +5,12 @@
     Allow users to become more familiar with the lobbying firms and funds that their representatives engage with. 
 2. **Team Members and Roles:**
     1. Gurleen K.
-        a. Implemented HTML and CSS handlebars and bootstrap frameworks.
-        b. Worked on implementing API calls and visualizing data using Chart.js
+        1. Implemented HTML and CSS handlebars and bootstrap frameworks.
+        2. Worked on implementing API calls and visualizing data using Chart.js
     2. Sanchita K.
-        a. Implemented user authentication using passport.js
-        b. Designed unit tests to verify secure password implementation
-        c. Created and maintained database storing user account information
+        1. Implemented user authentication using passport.js
+        2. Designed unit tests to verify secure password implementation
+        3. Created and maintained database storing user account information
 3. **Site Goals:**
     1. Inspire users to become more politically engaged and informed on the assignments and bills their representatives champion
     2. Recognize financial incentives legislators may have that may impact how they execute their legislatives roles and responsibilities
