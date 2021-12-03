@@ -44,10 +44,10 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1>Welcome back {{userInfo.first_name}}  {{userInfo.last_name}}!</h1>
-							<a onClick = "getTopContrib1('{{userInfo.senator1}}'); getTopIndustries1('{{userInfo.senator1}}'); getNews1('{{userInfo.senator1}}'); 
-										  getTopContrib2('{{userInfo.senator2}}'); getTopIndustries2('{{userInfo.senator2}}'); getNews2('{{userInfo.senator2}}');"
+							<a onClick = "getTopContrib1('{{userInfo.senator1}}', '{{open_api}}'); getTopIndustries1('{{userInfo.senator1}}', '{{open_api}}'); getNews1('{{userInfo.senator1}}', '{{news_api}}'); 
+										  getTopContrib2('{{userInfo.senator2}}', '{{open_api}}'); getTopIndustries2('{{userInfo.senator2}}', '{{open_api}}'); getNews2('{{userInfo.senator2}}', '{{news_api}}');"
 										  class="button primary">Click to show Senators data</a>
-							<a onClick = "getTopContrib3('{{userInfo.rep}}'); getTopIndustries3('{{userInfo.rep}}'); getNews3('{{userInfo.rep}}');"
+							<a onClick = "getTopContrib3('{{userInfo.rep}}', '{{open_api}}'); getTopIndustries3('{{userInfo.rep}}', '{{open_api}}'); getNews3('{{userInfo.rep}}', '{{news_api}}');"
 							class="button primary">Click to show Rep data</a>
 						</div>
 
@@ -57,7 +57,6 @@
 
 						<div section id="two" class="inner wrapper style2 spotlights">
 							<canvas id="topIndustry1"></canvas>
-<<<<<<< HEAD
 						</div>
 
 						<div id = "news1" class="inner wrapper style2 spotlights"></div>
@@ -67,17 +66,6 @@
 							<canvas id="topContrib2"></canvas>
 						</div>
 
-=======
-						</div>
-
-						<div id = "news1" class="inner wrapper style2 spotlights"></div>
-
-
-						<div section id="one" class="inner wrapper style2 spotlights">
-							<canvas id="topContrib2"></canvas>
-						</div>
-
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						<div section id="two" class="inner wrapper style2 spotlights">
 							<canvas id="topIndustry2"></canvas>
 						</div>
@@ -109,7 +97,7 @@
 		<!-- Scripts -->
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script>
-			function getTopContrib1(sen) {
+			function getTopContrib1(sen, apiKey) {
 				console.log("getting top contributors");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -145,13 +133,12 @@
 						document.getElementById('topContrib1').style.backgroundColor = "white";
 					}
 				};
-				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
 		
-		function getTopContrib2(sen) {
+		function getTopContrib2(sen, apiKey) {
 				console.log("getting top contributors");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -187,12 +174,11 @@
 						document.getElementById('topContrib2').style.backgroundColor = "white";
 					}
 				};
-				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004981&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-			function getTopContrib3(rep) {
+			function getTopContrib3(rep, apiKey) {
 				console.log("getting top contributors");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -228,12 +214,11 @@
 						document.getElementById('topContrib3').style.backgroundColor = "white";
 					}
 				};
-				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004884&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-			function getTopIndustries1(sen) {
+			function getTopIndustries1(sen, apiKey) {
 				console.log("getting top industries");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -269,13 +254,12 @@
 						document.getElementById('topIndustry1').style.backgroundColor = "white";
 					}
 				};
-				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				var cycle = "2020";
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-			function getTopIndustries2(sen) {
+			function getTopIndustries2(sen, apiKey) {
 				console.log("getting top industries");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -311,13 +295,12 @@
 						document.getElementById('topIndustry2').style.backgroundColor = "white";
 					}
 				};
-				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				var cycle = "2020";
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004981&cycle=${cycle}&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-			function getTopIndustries3(rep) {
+			function getTopIndustries3(rep, apiKey) {
 				console.log("getting top industries");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -353,13 +336,12 @@
 						document.getElementById('topIndustry3').style.backgroundColor = "white";
 					}
 				};
-				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				var cycle = "2020";
 				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004884&cycle=${cycle}&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-			function getNews1(sen) {
+			function getNews1(sen, apiKey) {
 				console.log("getting news");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -385,12 +367,11 @@
 						}
 					}
 				};
-				var apiKey = process.env.NEWS_API_KEY;
 				var sen = sen;
 				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=${apiKey}`, true);
 				xhttp.send();
 			}
-			function getNews2(sen) {
+			function getNews2(sen, apiKey) {
 				console.log("getting news");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -416,12 +397,11 @@
 						}
 					}
 				};
-				var apiKey = process.env.NEWS_API_KEY;
 				var sen = sen;
 				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=${apiKey}`, true);
 				xhttp.send();
 			}
-			function getNews3(rep) {
+			function getNews3(rep, apiKey) {
 				console.log("getting news");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -447,7 +427,6 @@
 						}
 					}
 				};
-				var apiKey = process.env.NEWS_API_KEY;
 				var sen = sen;
 				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${rep}&from=2021-11-01&sortBy=publishedAt&apiKey=${apiKey}`, true);
 				xhttp.send();
