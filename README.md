@@ -1,8 +1,26 @@
 ## [Bootstrap source](https://html5up.net/hyperspace)
 ----
 
-## Requirement 4: Charting Library
-Our project uses Chart.js to display data received from the API as bar graphs. We thought this was a suitable option for displaying the data since there are multiple sources of funds legislators receive and this allows users to see both the top sources of political contributions a politician receives and compare the amounts of funds received. This allows users to get a more holistic image of the different factors that may be influencing the actions and priorities of their legislators. It can also shed light on how they approach their committee or other special assignments.
+> Assignment 3
+> > ## Requirement 4: 
+> > ### Charting Library
+> > Our project uses Chart.js to display data received from the API as bar graphs. We thought this was a 
+> > suitable  option for displaying the data since there are multiple sources of funds legislators receive and
+> > this allows  users to see both the top sources of political contributions a politician receives and 
+> > compare the amounts of  funds received. This allows users to get a more holistic image of the different 
+> > factors that may be  influencing the actions and priorities of their legislators. It can also shed light
+> > on how they approach  their committee or other special assignments.
+> > ### API Data
+> > On the user's dashboard, the user is presented with the option to view financial data on their senators 
+> > and or their representative. The senators and representative presented here come from the information the
+> > user entered when creating their account. The financial data is retrieved from the OpenSecrets API. 
+> > Currently, our application uses two of their available data retrieval methods to show the user data on 
+> > the top industries and contributors to a congressional member. In addition, we use a news API to gather 
+> > recent news on each of  the user's representatives. By combining this information, we aim to give users a
+> > more holistic and transparent understanding of the affairs and political assignments their
+> > representatives take on as well as  highlight financial dealings users may not have been aware of that 
+> > could impact how a member executes their  legislative responsibilities. 
+
 
 > Assignment 2
 > > ## Unit testing: Requirement 4:
