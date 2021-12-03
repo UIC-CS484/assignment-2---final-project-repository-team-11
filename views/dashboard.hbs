@@ -110,54 +110,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script>
 			function getTopContrib1(sen) {
-<<<<<<< HEAD
-				console.log("getting top contributors");
-
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						let labels = [];
-						let data = {
-							labels: labels, 
-							datasets: [{
-								label: `Top Contributors to ${sen}`, 
-								data: [], 
-								backgroundColor: 'rgb(67, 170, 139)',
-								borderColor: 'rgb(205, 137, 135)',
-								borderWidth: 3
-							}]
-						};
-
-						let output = JSON.parse(this.responseText).response.contributors.contributor;
-						for (let i = 0; i < output.length; i++) {
-							labels.push(String(output[i]['@attributes'].org_name));
-							data.datasets[0].data.push(output[i]['@attributes'].total);
-						}
-
-						const config = {
-							type: 'bar', 
-							data: data,
-							options: {
-								scales: {
-									y: {
-										beginAtZero: true,
-									},
-								}
-							}
-						};
-						const myChart = new Chart(document.getElementById('topContrib1'),config);
-						document.getElementById('topContrib1').style.backgroundColor = "white";
-					}
-				};
-				var apiKey;
-				var cid;
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
-				xhttp.send();
-			}
-		
-		function getTopContrib2(sen) {
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				console.log("getting top contributors");
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -189,27 +141,13 @@
 								}
 							}
 						};
-<<<<<<< HEAD
-						const myChart = new Chart(document.getElementById('topContrib2'),config);
-						document.getElementById('topContrib2').style.backgroundColor = "white";
-=======
 						const myChart = new Chart(document.getElementById('topContrib1'),config);
 						document.getElementById('topContrib1').style.backgroundColor = "white";
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
-<<<<<<< HEAD
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004981&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
-				xhttp.send();
-			}
-
-			function getTopContrib3(rep) {
-				console.log("getting top contributors");
-
-=======
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
 		
@@ -249,14 +187,13 @@
 						document.getElementById('topContrib2').style.backgroundColor = "white";
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004981&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004981&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
 			function getTopContrib3(rep) {
 				console.log("getting top contributors");
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -271,19 +208,11 @@
 								borderWidth: 3
 							}]
 						};
-<<<<<<< HEAD
-
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						let output = JSON.parse(this.responseText).response.contributors.contributor;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].org_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
-<<<<<<< HEAD
-
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -299,15 +228,11 @@
 						document.getElementById('topContrib3').style.backgroundColor = "white";
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004884&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00004884&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-<<<<<<< HEAD
-
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 			function getTopIndustries1(sen) {
 				console.log("getting top industries");
 				var xhttp = new XMLHttpRequest();
@@ -344,21 +269,14 @@
 						document.getElementById('topIndustry1').style.backgroundColor = "white";
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				var cycle = "2020";
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-<<<<<<< HEAD
-
 			function getTopIndustries2(sen) {
 				console.log("getting top industries");
-
-=======
-			function getTopIndustries2(sen) {
-				console.log("getting top industries");
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -373,19 +291,11 @@
 								borderWidth: 3
 							}]
 						};
-<<<<<<< HEAD
-
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						let output = JSON.parse(this.responseText).response.industries.industry;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].industry_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
-<<<<<<< HEAD
-
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -401,21 +311,14 @@
 						document.getElementById('topIndustry2').style.backgroundColor = "white";
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				var cycle = "2020";
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004981&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004981&cycle=${cycle}&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
-<<<<<<< HEAD
-
 			function getTopIndustries3(rep) {
 				console.log("getting top industries");
-
-=======
-			function getTopIndustries3(rep) {
-				console.log("getting top industries");
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -430,19 +333,11 @@
 								borderWidth: 3
 							}]
 						};
-<<<<<<< HEAD
-
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						let output = JSON.parse(this.responseText).response.industries.industry;
 						for (let i = 0; i < output.length; i++) {
 							labels.push(String(output[i]['@attributes'].industry_name));
 							data.datasets[0].data.push(output[i]['@attributes'].total);
 						}
-<<<<<<< HEAD
-
-=======
->>>>>>> 46514394a00c87b51426db6a7b5e8835dc155eef
 						const config = {
 							type: 'bar', 
 							data: data,
@@ -458,10 +353,10 @@
 						document.getElementById('topIndustry3').style.backgroundColor = "white";
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.OPEN_SECRETS_API_KEY;
 				var cid;
 				var cycle = "2020";
-				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004884&cycle=${cycle}&apikey=2ee5a4893d2016c62994c610d8575063&output=json`, true);
+				xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00004884&cycle=${cycle}&apikey=${apiKey}&output=json`, true);
 				xhttp.send();
 			}
 			function getNews1(sen) {
@@ -490,9 +385,9 @@
 						}
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.NEWS_API_KEY;
 				var sen = sen;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=${apiKey}`, true);
 				xhttp.send();
 			}
 			function getNews2(sen) {
@@ -521,9 +416,9 @@
 						}
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.NEWS_API_KEY;
 				var sen = sen;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=${apiKey}`, true);
 				xhttp.send();
 			}
 			function getNews3(rep) {
@@ -552,9 +447,9 @@
 						}
 					}
 				};
-				var apiKey;
+				var apiKey = process.env.NEWS_API_KEY;
 				var sen = sen;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${rep}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${rep}&from=2021-11-01&sortBy=publishedAt&apiKey=${apiKey}`, true);
 				xhttp.send();
 			}
 		</script>
