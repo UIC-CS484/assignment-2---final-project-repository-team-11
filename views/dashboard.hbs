@@ -368,7 +368,18 @@
 					}
 				};
 				var sen = sen;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=${apiKey}`, true);
+				var date = new Date();
+				var day = date.getDate() - 1;
+				if (day == 0) {
+					day = 1;
+				}
+				var month = date.getMonth() + 1;
+				month = month - 1;
+				if (month == 0) {
+					month = 1;
+				}
+				var year = date.getFullYear();
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=${year}-${month}-${day}&sortBy=publishedAt&apiKey=${apiKey}`, true);
 				xhttp.send();
 			}
 			function getNews2(sen, apiKey) {
