@@ -20,6 +20,7 @@ var app = express();
 
 //passport config
 require('./config/passport')(passport);
+require('dotenv').config();
 
 var session_config = {
 		secret: 'secret', //a random unique string key used to authenticate a session
