@@ -373,9 +373,19 @@
 						}
 					}
 				};
-				var apiKey;
 				var sen = sen;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
+				var date = new Date();
+				var day = date.getDate();
+				if (day == 0) {
+					day = 1;
+				}
+				var month = date.getMonth() + 1;
+				month = month - 1;
+				if (month == 0) {
+					month = 1;
+				}
+				var year = date.getFullYear();
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=${year}-${month}-${day}&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
 				xhttp.send();
 			}
 			function getNews2(sen) {
@@ -404,10 +414,21 @@
 						}
 					}
 				};
-				var apiKey;
 				var sen = sen;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
+				var date = new Date();
+				var day = date.getDate();
+				if (day == 0) {
+					day = 1;
+				}
+				var month = date.getMonth() + 1;
+				month = month - 1;
+				if (month == 0) {
+					month = 1;
+				}
+				var year = date.getFullYear();
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=${year}-${month}-${day}&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
 				xhttp.send();
+
 			}
 			function getNews3(rep) {
 				console.log("getting news");
@@ -435,9 +456,19 @@
 						}
 					}
 				};
-				var apiKey;
 				var sen = sen;
-				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${rep}&from=2021-11-01&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
+				var date = new Date();
+				var day = date.getDate();
+				if (day == 0) {
+					day = 1;
+				}
+				var month = date.getMonth() + 1;
+				month = month - 1;
+				if (month == 0) {
+					month = 1;
+				}
+				var year = date.getFullYear();
+				xhttp.open("GET", `https://newsapi.org/v2/everything?q=${rep}&from=${year}-${month}-${day}&sortBy=publishedAt&apiKey=980334a7a2044973bb2497e9fa20c201`, true);
 				xhttp.send();
 			}
 		</script>
