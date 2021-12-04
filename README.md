@@ -16,9 +16,10 @@
     2. Recognize financial incentives legislators may have that may impact how they execute their legislatives roles and responsibilities
 4. **API Code Snippets**
     ```js
-    xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=${apikey}&output=json`, true);
+    xhttp.open("GET", `https://www.opensecrets.org/api/?method=candContrib&cid=N00027860&apikey=${apiKey}&output=json`, true);
     xhttp.open("GET", `https://www.opensecrets.org/api/?method=candIndustry&cid=N00027860&cycle=${cycle}&apikey=${apikey}&output=json`, true);
-    xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=2021-11-01&sortBy=publishedAt&apiKey=${apikey}`, true);
+    xhttp.open("GET", `https://newsapi.org/v2/everything?q=${sen}&from=${year}-${month}-${day}&sortBy=publishedAt&apiKey=${apiKey}`, true);
+
     ```
 5. **Tools and Resources Used:**
     1. [HTML5UP.net](https://html5up.net/)
